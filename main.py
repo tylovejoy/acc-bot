@@ -1,12 +1,11 @@
+import logging
+import os
 from pathlib import Path
 
 import discord
-import os
 import dotenv
-import logging
-from pretty_help import PrettyHelp
 from discord.ext import commands
-
+from pretty_help import PrettyHelp
 
 bot = commands.Bot(
     command_prefix=commands.when_mentioned_or(";"),
@@ -51,4 +50,6 @@ async def on_message(message):
 
 dotenv.load_dotenv(".env")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+logging.basicConfig(level=logging.INFO)
 await bot.start(BOT_TOKEN)
