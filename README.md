@@ -21,7 +21,7 @@ Clone the repository into your preferred directory
 
 Create a virtual environment in that same directory
 
-    $ python3.9 -m venv /venv
+    $ python3.9 -m venv venv
 
 Activate the virtual environment
    
