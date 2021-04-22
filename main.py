@@ -52,4 +52,4 @@ dotenv.load_dotenv(".env")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 logging.basicConfig(level=logging.INFO)
-await bot.start(BOT_TOKEN)
+bot.run(BOT_TOKEN)
