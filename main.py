@@ -48,8 +48,9 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
-dotenv.load_dotenv(".env")
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+if __name__ == '__main__':
+    dotenv.load_dotenv(".env")
+    BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-logging.basicConfig(level=logging.INFO)
-bot.run(BOT_TOKEN)
+    logging.basicConfig(level=logging.INFO)
+    bot.run(BOT_TOKEN)
