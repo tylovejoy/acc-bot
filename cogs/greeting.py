@@ -1,5 +1,5 @@
 from discord.ext import commands
-
+from discord import Embed
 from internal import constants
 
 
@@ -13,8 +13,11 @@ class Greeting(commands.Cog, name="Greet newcomers."):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        # TODO: add Embed() to display greeting to user.
-        pass
+        embed = Embed(title=f"Hello, {member.mention}")
+        embed.add_field(
+            name="Welcome to the IT & CS ACC Students Server!", value="Placeholder"
+        )
+        await self.bot.get_channel(constants.WELCOME_CHANNEL_ID).send(embed=embed)
 
 
 def setup(bot):
