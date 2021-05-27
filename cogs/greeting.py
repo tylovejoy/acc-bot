@@ -15,23 +15,23 @@ class Greeting(commands.Cog, name="Greet newcomers."):
             value="We hope you enjoy your stay. :)",
             inline=False,
         )
-        embed.add_field(
-            name="Role selection",
-            value="React with the roles you want access to!",
-            inline=False,
-        )
-        embed.add_field(name="🔌", value="IT Support", inline=True)
-        embed.add_field(name="⌨", value="Programming", inline=True)
-        embed.add_field(name="🔒", value="Cyber-Security", inline=True)
-        embed.add_field(name="💻", value="Web Development", inline=True)
-        msg = await self.bot.get_channel(constants.WELCOME_CHANNEL_ID).send(
+        # embed.add_field(
+        #     name="Role selection",
+        #     value="React with the roles you want access to!",
+        #     inline=False,
+        # )
+        # embed.add_field(name="🔌", value="IT Support", inline=True)
+        # embed.add_field(name="⌨", value="Programming", inline=True)
+        # embed.add_field(name="🔒", value="Cyber-Security", inline=True)
+        # embed.add_field(name="💻", value="Web Development", inline=True)
+        await self.bot.get_channel(constants.WELCOME_CHANNEL_ID).send(
             f"{member.mention}",
             embed=embed,
         )
-        await msg.add_reaction("🔌")
-        await msg.add_reaction("⌨")
-        await msg.add_reaction("🔒")
-        await msg.add_reaction("💻")
+        # await msg.add_reaction("🔌")
+        # await msg.add_reaction("⌨")
+        # await msg.add_reaction("🔒")
+        # await msg.add_reaction("💻")
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
