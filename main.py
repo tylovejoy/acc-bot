@@ -48,7 +48,7 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     dotenv.load_dotenv(".env")
     BOT_TOKEN = os.getenv("BOT_TOKEN")
 
