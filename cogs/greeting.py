@@ -1,5 +1,5 @@
 from discord.ext import commands
-from discord import Member
+from discord import Member, File
 from internal import constants
 from internal.constants import HOMEWORK_HELP_CHANNEL_ID, WELCOME_CHANNEL_ID
 from internal.embed_util import server_embed
@@ -16,8 +16,10 @@ class Greeting(commands.Cog, name="Greet newcomers."):
         # TODO: Add guild ID to constants.py and change to get_guild
         guild = await self.bot.fetch_guild(constants.GUILD_ID)
         embed, file = server_embed(title="Hello!")
+        image = File("assets/riverbat.jpg", filename="riverbat.jpg")
+        embed.set_image(url="attachment://riverbat.jpg")
         embed.add_field(
-            name=f"Welcome to the {guild.name}, {member.mention}!",
+            name=f"Welcome to the {guild.name}!",
             value="We hope you enjoy your stay. :grin:",
             inline=False,
         )
@@ -27,12 +29,8 @@ class Greeting(commands.Cog, name="Greet newcomers."):
         )
 
         await self.bot.get_channel(constants.WELCOME_CHANNEL_ID).send(
-            f"{member.mention}", embed=embed, file=file
+            f"{member.mention}", embed=embed, files=[file, image]
         )
-
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload):
-        pass
 
 
 def setup(bot):
