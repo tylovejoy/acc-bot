@@ -11,8 +11,8 @@ class Quotes(commands.Cog, name="Quotes"):
         self.bot = bot
 
     @commands.group(
-        help="",
-        brief="",
+        help="Quickly display specific quotes.",
+        brief="Quickly display specific quotes.",
         aliases=["quote"],
     )
     async def tag(self, ctx):
@@ -31,8 +31,8 @@ class Quotes(commands.Cog, name="Quotes"):
             await ctx.send(embed=embed, file=file)
 
     @tag.command(
-        help="Don't ask to ask, just ask!",
-        brief="",
+        help='Displays the link for "Don\'t ask to ask, just ask!"',
+        brief='Displays the link for "Don\'t ask to ask, just ask!"',
         aliases=["dontask"],
     )
     async def dataja(self, ctx):
@@ -40,7 +40,7 @@ class Quotes(commands.Cog, name="Quotes"):
 
     @tag.command(
         help="How to properly format code on Discord!",
-        brief="",
+        brief="How to properly format code on Discord!",
         aliases=["format", "code"],
     )
     async def formatcode(self, ctx):
