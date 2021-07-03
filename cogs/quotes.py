@@ -1,6 +1,6 @@
 from discord.ext import commands
 from discord import Embed
-
+from discord.utils import escape_markdown
 from internal.embed_util import server_embed
 
 
@@ -37,6 +37,41 @@ class Quotes(commands.Cog, name="Quotes"):
     )
     async def dataja(self, ctx):
         await ctx.send("https://dontasktoask.com/")
+
+    @tag.command(
+        help="How to properly format code on Discord!",
+        brief="",
+        aliases=["format", "code"],
+    )
+    async def formatcode(self, ctx):
+        embed, file = server_embed(
+            title="Code Formatting",
+            desc="Please format your code for Discord. It makes it so much easier to read.\nㅤ\n",
+        )
+        embed.add_field(
+            name="Python Code",
+            value=(
+                escape_markdown('```py\nprint("Hello")\n```')
+                + "\nWill look like this:\n"
+                '```py\nprint("Hello")\n```\nㅤ\n'
+            ),
+            inline=False,
+        )
+        embed.add_field(
+            name="C++ Code",
+            value=(
+                escape_markdown('```c++\ncout << "Hello, World!" << endl;\n```')
+                + "\nWill look like this:\n"
+                '```c++\ncout << "Hello, World!" << endl;\n```\nㅤ\n'
+            ),
+            inline=False,
+        )
+        embed.add_field(
+            name="Many other languages work!",
+            value="Click this link for a complete list: https://highlightjs.org/static/demo/\nㅤ\n",
+            inline=False,
+        )
+        await ctx.send(embed=embed, file=file)
 
 
 def setup(bot):
