@@ -7,11 +7,14 @@ import dotenv
 from discord.ext import commands
 from pretty_help import PrettyHelp
 
+from internal import constants
+from internal.constants import ACC_PURPLE
+
 bot = commands.Bot(
     command_prefix=commands.when_mentioned_or(";"),
     description="A bot for CS/IT @ ACC Discord server.",
     intents=discord.Intents.all(),
-    help_command=PrettyHelp(show_index=False, color=discord.Color.purple()),
+    help_command=PrettyHelp(show_index=False, color=ACC_PURPLE),
     case_insensitive=True,
 )
 
@@ -33,6 +36,7 @@ async def load_all_extensions():
 async def on_ready():
     await load_all_extensions()
     app_info = await bot.application_info()
+    logging.info(constants.ACC_ASCII_LOGO)
     logging.info(
         f"\n\nLogged in as: {bot.user.name}\n"
         f"Using discord.py version: {discord.__version__}\n"
