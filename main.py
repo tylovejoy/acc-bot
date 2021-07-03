@@ -60,6 +60,10 @@ async def on_message(message):
     """Allow bot to ignore all other bots."""
     if message.author.bot:
         return
+
+    if "riverbot" in message.content.lower():
+        await message.channel.send("🦇🦇_\\*Bat screeches\\*_🦇🦇")
+
     await bot.process_commands(message)
 
 
