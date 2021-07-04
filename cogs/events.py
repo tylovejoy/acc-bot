@@ -1,7 +1,7 @@
-from discord import Member, File
+from discord import File, Member
 from discord.ext import commands
 
-from internal.constants import HOMEWORK_HELP_CHANNEL_ID, WELCOME_CHANNEL_ID, GUILD_ID
+from internal.constants import GUILD_ID, HOMEWORK_HELP_CHANNEL_ID, WELCOME_CHANNEL_ID
 from internal.embed_util import server_embed
 
 

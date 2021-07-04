@@ -1,6 +1,7 @@
 import logging
 import os
 from pathlib import Path
+
 import discord
 import dotenv
 from discord.ext import commands
@@ -8,7 +9,6 @@ from pretty_help import PrettyHelp
 
 from internal import constants
 from internal.constants import ACC_PURPLE
-
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
