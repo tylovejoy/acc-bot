@@ -1,6 +1,7 @@
-from discord.ext import commands
 from discord import Embed
+from discord.ext import commands
 from discord.utils import escape_markdown
+
 from internal.embed_util import server_embed
 
 
@@ -33,9 +34,9 @@ class Tags(commands.Cog, name="Tags"):
     @tag.command(
         help='Displays the link for "Don\'t ask to ask, just ask!"',
         brief='Displays the link for "Don\'t ask to ask, just ask!"',
-        aliases=["dontask"],
+        aliases=["dataja"],
     )
-    async def dataja(self, ctx):
+    async def dontask(self, ctx):
         await ctx.send("https://dontasktoask.com/")
 
     @tag.command(
