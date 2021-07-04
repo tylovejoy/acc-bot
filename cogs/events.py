@@ -1,20 +1,32 @@
-from discord.ext import commands
 from discord import Member, File
-from internal import constants
-from internal.constants import HOMEWORK_HELP_CHANNEL_ID, WELCOME_CHANNEL_ID
+from discord.ext import commands
+
+from internal.constants import HOMEWORK_HELP_CHANNEL_ID, WELCOME_CHANNEL_ID, GUILD_ID
 from internal.embed_util import server_embed
 
 
-class Greeting(commands.Cog, name="Greet newcomers."):
+class Events(commands.Cog, name="Events"):
+    """Events"""
+
     def __init__(self, bot):
         self.bot = bot
+        self._cd = commands.CooldownMapping.from_cooldown(
+            1.0, 60.0, commands.BucketType.user
+        )
         self.homework_help_channel = self.bot.get_channel(HOMEWORK_HELP_CHANNEL_ID)
         self.welcome_channel = self.bot.get_channel(WELCOME_CHANNEL_ID)
 
     @commands.Cog.listener()
+    async def on_message(self, message):
+        if "riverbot" in message.content.lower():
+            bucket = self._cd.get_bucket(message)
+            retry_after = bucket.update_rate_limit()
+            if not retry_after:
+                await message.channel.send("🦇🦇_\\*Bat screeches\\*_🦇🦇")
+
+    @commands.Cog.listener()
     async def on_member_join(self, member: Member):
-        # TODO: Add guild ID to constants.py and change to get_guild
-        guild = await self.bot.fetch_guild(constants.GUILD_ID)
+        guild = await self.bot.get_guild(GUILD_ID)
         embed, file = server_embed(title="Hello!")
         image = File("assets/riverbat.jpg", filename="riverbat.jpg")
         embed.set_image(url="attachment://riverbat.jpg")
@@ -28,11 +40,11 @@ class Greeting(commands.Cog, name="Greet newcomers."):
             value=f"Go to {self.homework_help_channel.mention} and ask your question!",
         )
 
-        await self.bot.get_channel(constants.WELCOME_CHANNEL_ID).send(
+        await self.welcome_channel.send(
             f"{member.mention}", embed=embed, files=[file, image]
         )
 
 
 def setup(bot):
     """Add Cog to Discord bot."""
-    bot.add_cog(Greeting(bot))
+    bot.add_cog(Events(bot))

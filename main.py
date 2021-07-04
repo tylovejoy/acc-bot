@@ -61,9 +61,6 @@ async def on_message(message):
     if message.author.bot:
         return
 
-    if "riverbot" in message.content.lower():
-        await message.channel.send("🦇🦇_\\*Bat screeches\\*_🦇🦇")
-
     await bot.process_commands(message)
 
 
