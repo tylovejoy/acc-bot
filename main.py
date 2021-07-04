@@ -53,6 +53,11 @@ async def on_ready():
         f"Using discord.py version: {discord.__version__}\n"
         f"Owner: {app_info.owner}\n\n"
     )
+    await bot.change_presence(
+        activity=discord.Activity(
+            type=discord.ActivityType.watching, name="hours of recorded lectures."
+        )
+    )
 
 
 @bot.event
