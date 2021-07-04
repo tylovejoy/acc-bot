@@ -16,7 +16,7 @@ logger.setLevel(logging.INFO)
 consoleHandle = logging.StreamHandler()
 consoleHandle.setLevel(logging.INFO)
 consoleHandle.setFormatter(
-    logging.Formatter("%(asctime)s :: %(name)-18s :: %(levelname)-8s :: %(message)s")
+    logging.Formatter("%(name)-18s :: %(levelname)-8s :: %(message)s")
 )
 logger.addHandler(consoleHandle)
 
