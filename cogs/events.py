@@ -1,3 +1,5 @@
+import asyncio
+
 from discord import File, Member
 from discord.ext import commands
 
@@ -26,6 +28,7 @@ class Events(commands.Cog, name="Events"):
 
     @commands.Cog.listener()
     async def on_member_join(self, member: Member):
+        await asyncio.sleep(30)
         guild = self.bot.get_guild(GUILD_ID)
         embed, file = server_embed(title="Hello!")
         image = File("assets/riverbat.jpg", filename="riverbat.jpg")
