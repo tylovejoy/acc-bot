@@ -26,7 +26,7 @@ class Events(commands.Cog, name="Events"):
 
     @commands.Cog.listener()
     async def on_member_join(self, member: Member):
-        guild = await self.bot.get_guild(GUILD_ID)
+        guild = self.bot.get_guild(GUILD_ID)
         embed, file = server_embed(title="Hello!")
         image = File("assets/riverbat.jpg", filename="riverbat.jpg")
         embed.set_image(url="attachment://riverbat.jpg")
